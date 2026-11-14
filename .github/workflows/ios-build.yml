@@ -10,7 +10,7 @@ on:
 jobs:
   build-ipa:
     name: Compilar IPA (Unsigned / Ad-Hoc)
-    runs-on: macos-14
+    runs-on: macos-latest
 
     steps:
       - name: Checkout do Repositório
