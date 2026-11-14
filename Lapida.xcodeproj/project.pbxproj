@@ -8,24 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		000000010000000100000071 /* LapidaKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 000000010000000100000040 /* LapidaKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B_APP_1 /* LapidaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_1 /* LapidaApp.swift */; };
-		B_APP_2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_2 /* ContentView.swift */; };
-		B_APP_3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_3 /* HeaderView.swift */; };
-		B_APP_4 /* ApiKeyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_4 /* ApiKeyCard.swift */; };
-		B_APP_5 /* StepCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_5 /* StepCard.swift */; };
-		B_APP_6 /* TestAreaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_6 /* TestAreaCard.swift */; };
-		B_APP_7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F_APP_7 /* Assets.xcassets */; };
-		B_APP_10 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_1 /* SharedStorage.swift */; };
-		B_KB_1 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_1 /* SharedStorage.swift */; };
-		B_APP_11 /* RewriteTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_2 /* RewriteTone.swift */; };
-		B_KB_2 /* RewriteTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_2 /* RewriteTone.swift */; };
-		B_APP_12 /* LocalRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_3 /* LocalRewriteEngine.swift */; };
-		B_KB_3 /* LocalRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_3 /* LocalRewriteEngine.swift */; };
-		B_APP_13 /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_4 /* GeminiService.swift */; };
-		B_KB_4 /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_4 /* GeminiService.swift */; };
-		B_KB_5 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_5 /* KeyboardViewController.swift */; };
-		B_KB_6 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_6 /* KeyboardView.swift */; };
-		B_KB_7 /* LapidaActionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_7 /* LapidaActionToolbar.swift */; };
+		B_APP_SWIFT_1 /* LapidaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_1 /* LapidaApp.swift */; };
+		B_APP_SWIFT_2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_2 /* ContentView.swift */; };
+		B_APP_SWIFT_3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_3 /* HeaderView.swift */; };
+		B_APP_SWIFT_4 /* ApiKeyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_4 /* ApiKeyCard.swift */; };
+		B_APP_SWIFT_5 /* StepCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_5 /* StepCard.swift */; };
+		B_APP_SWIFT_6 /* TestAreaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_6 /* TestAreaCard.swift */; };
+		B_APP_SWIFT_7 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_7 /* SharedStorage.swift */; };
+		B_APP_SWIFT_8 /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_8 /* GeminiService.swift */; };
+		B_APP_SWIFT_9 /* LocalRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_9 /* LocalRewriteEngine.swift */; };
+		B_APP_SWIFT_10 /* RewriteTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_SWIFT_10 /* RewriteTone.swift */; };
+		B_APP_ASSETS /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F_APP_ASSETS /* Assets.xcassets */; };
+		B_KB_SWIFT_1 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_SWIFT_1 /* KeyboardViewController.swift */; };
+		B_KB_SWIFT_2 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_SWIFT_2 /* KeyboardView.swift */; };
+		B_KB_SWIFT_3 /* LapidaActionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_SWIFT_3 /* LapidaActionToolbar.swift */; };
+		B_KB_SWIFT_4 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_SWIFT_4 /* SharedStorage.swift */; };
+		B_KB_SWIFT_5 /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_SWIFT_5 /* GeminiService.swift */; };
+		B_KB_SWIFT_6 /* LocalRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_SWIFT_6 /* LocalRewriteEngine.swift */; };
+		B_KB_SWIFT_7 /* RewriteTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_SWIFT_7 /* RewriteTone.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,24 +55,28 @@
 /* Begin PBXFileReference section */
 		000000010000000100000030 /* Lapida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lapida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		000000010000000100000040 /* LapidaKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LapidaKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		F_APP_1 /* LapidaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LapidaApp.swift"; path = "LapidaApp/App/LapidaApp.swift"; sourceTree = "<group>"; };
-		F_APP_2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "ContentView.swift"; path = "LapidaApp/Views/ContentView.swift"; sourceTree = "<group>"; };
-		F_APP_3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "HeaderView.swift"; path = "LapidaApp/Views/Components/HeaderView.swift"; sourceTree = "<group>"; };
-		F_APP_4 /* ApiKeyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "ApiKeyCard.swift"; path = "LapidaApp/Views/Components/ApiKeyCard.swift"; sourceTree = "<group>"; };
-		F_APP_5 /* StepCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "StepCard.swift"; path = "LapidaApp/Views/Components/StepCard.swift"; sourceTree = "<group>"; };
-		F_APP_6 /* TestAreaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "TestAreaCard.swift"; path = "LapidaApp/Views/Components/TestAreaCard.swift"; sourceTree = "<group>"; };
-		F_APP_7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = "folder.assetcatalog"; name = "Assets.xcassets"; path = "LapidaApp/Assets.xcassets"; sourceTree = "<group>"; };
-		F_APP_8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.xml"; name = "Info.plist"; path = "LapidaApp/Info.plist"; sourceTree = "<group>"; };
-		F_APP_9 /* LapidaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.entitlements"; name = "LapidaApp.entitlements"; path = "LapidaApp/LapidaApp.entitlements"; sourceTree = "<group>"; };
-		F_KB_1 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "SharedStorage.swift"; path = "LapidaKeyboard/Services/SharedStorage.swift"; sourceTree = "<group>"; };
-		F_KB_2 /* RewriteTone.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "RewriteTone.swift"; path = "LapidaKeyboard/Models/RewriteTone.swift"; sourceTree = "<group>"; };
-		F_KB_3 /* LocalRewriteEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LocalRewriteEngine.swift"; path = "LapidaKeyboard/Services/LocalRewriteEngine.swift"; sourceTree = "<group>"; };
-		F_KB_4 /* GeminiService.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "GeminiService.swift"; path = "LapidaKeyboard/Services/GeminiService.swift"; sourceTree = "<group>"; };
-		F_KB_5 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "KeyboardViewController.swift"; path = "LapidaKeyboard/KeyboardViewController.swift"; sourceTree = "<group>"; };
-		F_KB_6 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "KeyboardView.swift"; path = "LapidaKeyboard/Views/KeyboardView.swift"; sourceTree = "<group>"; };
-		F_KB_7 /* LapidaActionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LapidaActionToolbar.swift"; path = "LapidaKeyboard/Views/LapidaActionToolbar.swift"; sourceTree = "<group>"; };
-		F_KB_8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.xml"; name = "Info.plist"; path = "LapidaKeyboard/Info.plist"; sourceTree = "<group>"; };
-		F_KB_9 /* LapidaKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.entitlements"; name = "LapidaKeyboard.entitlements"; path = "LapidaKeyboard/LapidaKeyboard.entitlements"; sourceTree = "<group>"; };
+		F_APP_SWIFT_1 /* LapidaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LapidaApp.swift"; path = "LapidaApp/App/LapidaApp.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "ContentView.swift"; path = "LapidaApp/Views/ContentView.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "HeaderView.swift"; path = "LapidaApp/Views/Components/HeaderView.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_4 /* ApiKeyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "ApiKeyCard.swift"; path = "LapidaApp/Views/Components/ApiKeyCard.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_5 /* StepCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "StepCard.swift"; path = "LapidaApp/Views/Components/StepCard.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_6 /* TestAreaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "TestAreaCard.swift"; path = "LapidaApp/Views/Components/TestAreaCard.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_7 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "SharedStorage.swift"; path = "LapidaApp/Services/SharedStorage.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_8 /* GeminiService.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "GeminiService.swift"; path = "LapidaApp/Services/GeminiService.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_9 /* LocalRewriteEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LocalRewriteEngine.swift"; path = "LapidaApp/Services/LocalRewriteEngine.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_SWIFT_10 /* RewriteTone.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "RewriteTone.swift"; path = "LapidaApp/Models/RewriteTone.swift"; sourceTree = SOURCE_ROOT; };
+		F_APP_ASSETS /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = "folder.assetcatalog"; name = "Assets.xcassets"; path = "LapidaApp/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		F_APP_PLIST /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.xml"; name = "Info.plist"; path = "LapidaApp/Info.plist"; sourceTree = SOURCE_ROOT; };
+		F_APP_ENTITLEMENTS /* LapidaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.entitlements"; name = "LapidaApp.entitlements"; path = "LapidaApp/LapidaApp.entitlements"; sourceTree = SOURCE_ROOT; };
+		F_KB_SWIFT_1 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "KeyboardViewController.swift"; path = "LapidaKeyboard/KeyboardViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F_KB_SWIFT_2 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "KeyboardView.swift"; path = "LapidaKeyboard/Views/KeyboardView.swift"; sourceTree = SOURCE_ROOT; };
+		F_KB_SWIFT_3 /* LapidaActionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LapidaActionToolbar.swift"; path = "LapidaKeyboard/Views/LapidaActionToolbar.swift"; sourceTree = SOURCE_ROOT; };
+		F_KB_SWIFT_4 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "SharedStorage.swift"; path = "LapidaKeyboard/Services/SharedStorage.swift"; sourceTree = SOURCE_ROOT; };
+		F_KB_SWIFT_5 /* GeminiService.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "GeminiService.swift"; path = "LapidaKeyboard/Services/GeminiService.swift"; sourceTree = SOURCE_ROOT; };
+		F_KB_SWIFT_6 /* LocalRewriteEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LocalRewriteEngine.swift"; path = "LapidaKeyboard/Services/LocalRewriteEngine.swift"; sourceTree = SOURCE_ROOT; };
+		F_KB_SWIFT_7 /* RewriteTone.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "RewriteTone.swift"; path = "LapidaKeyboard/Models/RewriteTone.swift"; sourceTree = SOURCE_ROOT; };
+		F_KB_PLIST /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.xml"; name = "Info.plist"; path = "LapidaKeyboard/Info.plist"; sourceTree = SOURCE_ROOT; };
+		F_KB_ENTITLEMENTS /* LapidaKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.entitlements"; name = "LapidaKeyboard.entitlements"; path = "LapidaKeyboard/LapidaKeyboard.entitlements"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,33 +118,37 @@
 		000000010000000100000004 /* LapidaApp */ = {
 			isa = PBXGroup;
 			children = (
-				F_APP_1 /* LapidaApp.swift */,
-				F_APP_2 /* ContentView.swift */,
-				F_APP_3 /* HeaderView.swift */,
-				F_APP_4 /* ApiKeyCard.swift */,
-				F_APP_5 /* StepCard.swift */,
-				F_APP_6 /* TestAreaCard.swift */,
-				F_APP_7 /* Assets.xcassets */,
-				F_APP_8 /* Info.plist */,
-				F_APP_9 /* LapidaApp.entitlements */,
+				F_APP_SWIFT_1 /* LapidaApp.swift */,
+				F_APP_SWIFT_2 /* ContentView.swift */,
+				F_APP_SWIFT_3 /* HeaderView.swift */,
+				F_APP_SWIFT_4 /* ApiKeyCard.swift */,
+				F_APP_SWIFT_5 /* StepCard.swift */,
+				F_APP_SWIFT_6 /* TestAreaCard.swift */,
+				F_APP_SWIFT_7 /* SharedStorage.swift */,
+				F_APP_SWIFT_8 /* GeminiService.swift */,
+				F_APP_SWIFT_9 /* LocalRewriteEngine.swift */,
+				F_APP_SWIFT_10 /* RewriteTone.swift */,
+				F_APP_ASSETS /* Assets.xcassets */,
+				F_APP_PLIST /* Info.plist */,
+				F_APP_ENTITLEMENTS /* LapidaApp.entitlements */,
 			);
-			path = LapidaApp;
+			name = LapidaApp;
 			sourceTree = "<group>";
 		};
 		000000010000000100000005 /* LapidaKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				F_KB_5 /* KeyboardViewController.swift */,
-				F_KB_6 /* KeyboardView.swift */,
-				F_KB_7 /* LapidaActionToolbar.swift */,
-				F_KB_1 /* SharedStorage.swift */,
-				F_KB_2 /* RewriteTone.swift */,
-				F_KB_3 /* LocalRewriteEngine.swift */,
-				F_KB_4 /* GeminiService.swift */,
-				F_KB_8 /* Info.plist */,
-				F_KB_9 /* LapidaKeyboard.entitlements */,
+				F_KB_SWIFT_1 /* KeyboardViewController.swift */,
+				F_KB_SWIFT_2 /* KeyboardView.swift */,
+				F_KB_SWIFT_3 /* LapidaActionToolbar.swift */,
+				F_KB_SWIFT_4 /* SharedStorage.swift */,
+				F_KB_SWIFT_5 /* GeminiService.swift */,
+				F_KB_SWIFT_6 /* LocalRewriteEngine.swift */,
+				F_KB_SWIFT_7 /* RewriteTone.swift */,
+				F_KB_PLIST /* Info.plist */,
+				F_KB_ENTITLEMENTS /* LapidaKeyboard.entitlements */,
 			);
-			path = LapidaKeyboard;
+			name = LapidaKeyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,7 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B_APP_7 /* Assets.xcassets in Resources */,
+				B_APP_ASSETS /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,16 +249,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B_APP_1 /* LapidaApp.swift in Sources */,
-				B_APP_2 /* ContentView.swift in Sources */,
-				B_APP_3 /* HeaderView.swift in Sources */,
-				B_APP_4 /* ApiKeyCard.swift in Sources */,
-				B_APP_5 /* StepCard.swift in Sources */,
-				B_APP_6 /* TestAreaCard.swift in Sources */,
-				B_APP_10 /* SharedStorage.swift in Sources */,
-				B_APP_11 /* RewriteTone.swift in Sources */,
-				B_APP_12 /* LocalRewriteEngine.swift in Sources */,
-				B_APP_13 /* GeminiService.swift in Sources */,
+				B_APP_SWIFT_1 /* LapidaApp.swift in Sources */,
+				B_APP_SWIFT_2 /* ContentView.swift in Sources */,
+				B_APP_SWIFT_3 /* HeaderView.swift in Sources */,
+				B_APP_SWIFT_4 /* ApiKeyCard.swift in Sources */,
+				B_APP_SWIFT_5 /* StepCard.swift in Sources */,
+				B_APP_SWIFT_6 /* TestAreaCard.swift in Sources */,
+				B_APP_SWIFT_7 /* SharedStorage.swift in Sources */,
+				B_APP_SWIFT_8 /* GeminiService.swift in Sources */,
+				B_APP_SWIFT_9 /* LocalRewriteEngine.swift in Sources */,
+				B_APP_SWIFT_10 /* RewriteTone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,13 +266,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B_KB_5 /* KeyboardViewController.swift in Sources */,
-				B_KB_6 /* KeyboardView.swift in Sources */,
-				B_KB_7 /* LapidaActionToolbar.swift in Sources */,
-				B_KB_1 /* SharedStorage.swift in Sources */,
-				B_KB_2 /* RewriteTone.swift in Sources */,
-				B_KB_3 /* LocalRewriteEngine.swift in Sources */,
-				B_KB_4 /* GeminiService.swift in Sources */,
+				B_KB_SWIFT_1 /* KeyboardViewController.swift in Sources */,
+				B_KB_SWIFT_2 /* KeyboardView.swift in Sources */,
+				B_KB_SWIFT_3 /* LapidaActionToolbar.swift in Sources */,
+				B_KB_SWIFT_4 /* SharedStorage.swift in Sources */,
+				B_KB_SWIFT_5 /* GeminiService.swift in Sources */,
+				B_KB_SWIFT_6 /* LocalRewriteEngine.swift in Sources */,
+				B_KB_SWIFT_7 /* RewriteTone.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
