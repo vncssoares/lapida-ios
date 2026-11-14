@@ -1,0 +1,458 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		000000010000000100000071 /* LapidaKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 000000010000000100000040 /* LapidaKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B_APP_1 /* LapidaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_1 /* LapidaApp.swift */; };
+		B_APP_2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_2 /* ContentView.swift */; };
+		B_APP_3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_3 /* HeaderView.swift */; };
+		B_APP_4 /* ApiKeyCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_4 /* ApiKeyCard.swift */; };
+		B_APP_5 /* StepCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_5 /* StepCard.swift */; };
+		B_APP_6 /* TestAreaCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_APP_6 /* TestAreaCard.swift */; };
+		B_APP_7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F_APP_7 /* Assets.xcassets */; };
+		B_APP_10 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_1 /* SharedStorage.swift */; };
+		B_KB_1 /* SharedStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_1 /* SharedStorage.swift */; };
+		B_APP_11 /* RewriteTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_2 /* RewriteTone.swift */; };
+		B_KB_2 /* RewriteTone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_2 /* RewriteTone.swift */; };
+		B_APP_12 /* LocalRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_3 /* LocalRewriteEngine.swift */; };
+		B_KB_3 /* LocalRewriteEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_3 /* LocalRewriteEngine.swift */; };
+		B_APP_13 /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_4 /* GeminiService.swift */; };
+		B_KB_4 /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_4 /* GeminiService.swift */; };
+		B_KB_5 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_5 /* KeyboardViewController.swift */; };
+		B_KB_6 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_6 /* KeyboardView.swift */; };
+		B_KB_7 /* LapidaActionToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F_KB_7 /* LapidaActionToolbar.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		000000010000000100000050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 000000010000000100000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 000000010000000100000020;
+			remoteInfo = LapidaKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		000000010000000100000070 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				000000010000000100000071 /* LapidaKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		000000010000000100000030 /* Lapida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lapida.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		000000010000000100000040 /* LapidaKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LapidaKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		F_APP_1 /* LapidaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LapidaApp.swift"; path = "LapidaApp/App/LapidaApp.swift"; sourceTree = "<group>"; };
+		F_APP_2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "ContentView.swift"; path = "LapidaApp/Views/ContentView.swift"; sourceTree = "<group>"; };
+		F_APP_3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "HeaderView.swift"; path = "LapidaApp/Views/Components/HeaderView.swift"; sourceTree = "<group>"; };
+		F_APP_4 /* ApiKeyCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "ApiKeyCard.swift"; path = "LapidaApp/Views/Components/ApiKeyCard.swift"; sourceTree = "<group>"; };
+		F_APP_5 /* StepCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "StepCard.swift"; path = "LapidaApp/Views/Components/StepCard.swift"; sourceTree = "<group>"; };
+		F_APP_6 /* TestAreaCard.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "TestAreaCard.swift"; path = "LapidaApp/Views/Components/TestAreaCard.swift"; sourceTree = "<group>"; };
+		F_APP_7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = "folder.assetcatalog"; name = "Assets.xcassets"; path = "LapidaApp/Assets.xcassets"; sourceTree = "<group>"; };
+		F_APP_8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.xml"; name = "Info.plist"; path = "LapidaApp/Info.plist"; sourceTree = "<group>"; };
+		F_APP_9 /* LapidaApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.entitlements"; name = "LapidaApp.entitlements"; path = "LapidaApp/LapidaApp.entitlements"; sourceTree = "<group>"; };
+		F_KB_1 /* SharedStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "SharedStorage.swift"; path = "LapidaKeyboard/Services/SharedStorage.swift"; sourceTree = "<group>"; };
+		F_KB_2 /* RewriteTone.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "RewriteTone.swift"; path = "LapidaKeyboard/Models/RewriteTone.swift"; sourceTree = "<group>"; };
+		F_KB_3 /* LocalRewriteEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LocalRewriteEngine.swift"; path = "LapidaKeyboard/Services/LocalRewriteEngine.swift"; sourceTree = "<group>"; };
+		F_KB_4 /* GeminiService.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "GeminiService.swift"; path = "LapidaKeyboard/Services/GeminiService.swift"; sourceTree = "<group>"; };
+		F_KB_5 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "KeyboardViewController.swift"; path = "LapidaKeyboard/KeyboardViewController.swift"; sourceTree = "<group>"; };
+		F_KB_6 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "KeyboardView.swift"; path = "LapidaKeyboard/Views/KeyboardView.swift"; sourceTree = "<group>"; };
+		F_KB_7 /* LapidaActionToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.swift"; name = "LapidaActionToolbar.swift"; path = "LapidaKeyboard/Views/LapidaActionToolbar.swift"; sourceTree = "<group>"; };
+		F_KB_8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.xml"; name = "Info.plist"; path = "LapidaKeyboard/Info.plist"; sourceTree = "<group>"; };
+		F_KB_9 /* LapidaKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = "text.plist.entitlements"; name = "LapidaKeyboard.entitlements"; path = "LapidaKeyboard/LapidaKeyboard.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		000000010000000100000082 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000000010000000100000092 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		000000010000000100000002 = {
+			isa = PBXGroup;
+			children = (
+				000000010000000100000004 /* LapidaApp */,
+				000000010000000100000005 /* LapidaKeyboard */,
+				000000010000000100000003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		000000010000000100000003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				000000010000000100000030 /* Lapida.app */,
+				000000010000000100000040 /* LapidaKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		000000010000000100000004 /* LapidaApp */ = {
+			isa = PBXGroup;
+			children = (
+				F_APP_1 /* LapidaApp.swift */,
+				F_APP_2 /* ContentView.swift */,
+				F_APP_3 /* HeaderView.swift */,
+				F_APP_4 /* ApiKeyCard.swift */,
+				F_APP_5 /* StepCard.swift */,
+				F_APP_6 /* TestAreaCard.swift */,
+				F_APP_7 /* Assets.xcassets */,
+				F_APP_8 /* Info.plist */,
+				F_APP_9 /* LapidaApp.entitlements */,
+			);
+			path = LapidaApp;
+			sourceTree = "<group>";
+		};
+		000000010000000100000005 /* LapidaKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				F_KB_5 /* KeyboardViewController.swift */,
+				F_KB_6 /* KeyboardView.swift */,
+				F_KB_7 /* LapidaActionToolbar.swift */,
+				F_KB_1 /* SharedStorage.swift */,
+				F_KB_2 /* RewriteTone.swift */,
+				F_KB_3 /* LocalRewriteEngine.swift */,
+				F_KB_4 /* GeminiService.swift */,
+				F_KB_8 /* Info.plist */,
+				F_KB_9 /* LapidaKeyboard.entitlements */,
+			);
+			path = LapidaKeyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		000000010000000100000010 /* LapidaApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0000000100000001000000A1 /* Build configuration list for PBXNativeTarget "LapidaApp" */;
+			buildPhases = (
+				000000010000000100000080 /* Sources */,
+				000000010000000100000082 /* Frameworks */,
+				000000010000000100000081 /* Resources */,
+				000000010000000100000070 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				000000010000000100000060 /* PBXTargetDependency */,
+			);
+			name = LapidaApp;
+			productName = LapidaApp;
+			productReference = 000000010000000100000030 /* Lapida.app */;
+			productType = "com.apple.product-type.application";
+		};
+		000000010000000100000020 /* LapidaKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0000000100000001000000A2 /* Build configuration list for PBXNativeTarget "LapidaKeyboard" */;
+			buildPhases = (
+				000000010000000100000090 /* Sources */,
+				000000010000000100000092 /* Frameworks */,
+				000000010000000100000091 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LapidaKeyboard;
+			productName = LapidaKeyboard;
+			productReference = 000000010000000100000040 /* LapidaKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		000000010000000100000001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					000000010000000100000010 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					000000010000000100000020 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+				};
+			};
+			buildConfigurationList = 0000000100000001000000A0 /* Build configuration list for PBXProject "Lapida" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = pt-BR;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				pt-BR,
+				Base,
+			);
+			mainGroup = 000000010000000100000002;
+			productRefGroup = 000000010000000100000003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				000000010000000100000010 /* LapidaApp */,
+				000000010000000100000020 /* LapidaKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		000000010000000100000081 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B_APP_7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000000010000000100000091 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		000000010000000100000080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B_APP_1 /* LapidaApp.swift in Sources */,
+				B_APP_2 /* ContentView.swift in Sources */,
+				B_APP_3 /* HeaderView.swift in Sources */,
+				B_APP_4 /* ApiKeyCard.swift in Sources */,
+				B_APP_5 /* StepCard.swift in Sources */,
+				B_APP_6 /* TestAreaCard.swift in Sources */,
+				B_APP_10 /* SharedStorage.swift in Sources */,
+				B_APP_11 /* RewriteTone.swift in Sources */,
+				B_APP_12 /* LocalRewriteEngine.swift in Sources */,
+				B_APP_13 /* GeminiService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		000000010000000100000090 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B_KB_5 /* KeyboardViewController.swift in Sources */,
+				B_KB_6 /* KeyboardView.swift in Sources */,
+				B_KB_7 /* LapidaActionToolbar.swift in Sources */,
+				B_KB_1 /* SharedStorage.swift in Sources */,
+				B_KB_2 /* RewriteTone.swift in Sources */,
+				B_KB_3 /* LocalRewriteEngine.swift in Sources */,
+				B_KB_4 /* GeminiService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		000000010000000100000060 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 000000010000000100000020 /* LapidaKeyboard */;
+			targetProxy = 000000010000000100000050 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0000000100000001000000B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0000000100000001000000B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0000000100000001000000B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LapidaApp/LapidaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LapidaApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lapida;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lapida.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0000000100000001000000B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = LapidaApp/LapidaApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LapidaApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lapida;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lapida.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		0000000100000001000000B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LapidaKeyboard/LapidaKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LapidaKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lapida;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lapida.app.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0000000100000001000000B5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = LapidaKeyboard/LapidaKeyboard.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LapidaKeyboard/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Lapida;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lapida.app.keyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0000000100000001000000A0 /* Build configuration list for PBXProject "Lapida" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0000000100000001000000B0 /* Debug */,
+				0000000100000001000000B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0000000100000001000000A1 /* Build configuration list for PBXNativeTarget "LapidaApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0000000100000001000000B2 /* Debug */,
+				0000000100000001000000B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0000000100000001000000A2 /* Build configuration list for PBXNativeTarget "LapidaKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0000000100000001000000B4 /* Debug */,
+				0000000100000001000000B5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 000000010000000100000001 /* Project object */;
+}

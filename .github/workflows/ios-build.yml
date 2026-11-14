@@ -1,0 +1,61 @@
+name: Build Lapida iOS IPA
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build-ipa:
+    name: Compilar IPA (Unsigned / Ad-Hoc)
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Versão do Xcode
+        run: |
+          sudo xcode-select -s /Applications/Xcode.app
+          xcodebuild -version
+
+      - name: Compilar Projeto com xcodebuild (Sem Assinatura Paga)
+        run: |
+          xcodebuild build \
+            -project "Lapida.xcodeproj" \
+            -target "LapidaApp" \
+            -configuration Release \
+            -sdk iphoneos \
+            -derivedDataPath build/derivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES
+
+      - name: Empacotar .ipa (Payload canônico para AltStore / Sideloadly)
+        run: |
+          mkdir -p build/ipa/Payload
+          
+          # Localiza o .app compilado
+          APP_PATH=$(find build/derivedData/Build/Products/Release-iphoneos -name "Lapida.app" -type d | head -n 1)
+          echo "Aplicativo compilado em: $APP_PATH"
+          
+          # Copia o bundle para Payload/
+          cp -R "$APP_PATH" build/ipa/Payload/
+          
+          # Gera o arquivo .ipa
+          cd build/ipa
+          zip -r -y Lapida.ipa Payload
+          cd ../..
+          
+          echo "Arquivo IPA gerado com sucesso:"
+          ls -la build/ipa/Lapida.ipa
+
+      - name: Disponibilizar IPA nos Artefatos do GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: Lapida-iOS-v1.0-IPA
+          path: build/ipa/Lapida.ipa
+          retention-days: 30

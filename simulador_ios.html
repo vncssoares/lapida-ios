@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lapida iOS – Simulador de Teclado iPhone</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0b0c10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Segoe UI', sans-serif;
+    color: #f5f5f7;
+    overflow-x: hidden;
+    padding: 20px;
+  }
+
+  /* Chassi do iPhone 15/16 Pro */
+  .iphone-frame {
+    width: 392px;
+    height: 844px;
+    background: #1a1a1c;
+    border-radius: 54px;
+    box-shadow: 0 0 0 4px #2c2c2e, 0 0 0 8px #0f0f10, 0 40px 90px rgba(0,0,0,0.85);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* Dynamic Island */
+  .dynamic-island {
+    position: absolute;
+    top: 11px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 124px;
+    height: 35px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .island-camera {
+    width: 11px;
+    height: 11px;
+    background: #090915;
+    border-radius: 50%;
+    border: 2px solid #1c1c24;
+    margin-left: auto;
+  }
+
+  /* Status Bar iOS */
+  .status-bar {
+    height: 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 0 26px 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 999;
+  }
+  .status-icons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+  .battery-pill {
+    width: 22px;
+    height: 11px;
+    border: 1.5px solid #fff;
+    border-radius: 3.5px;
+    padding: 1px;
+    position: relative;
+  }
+  .battery-pill::after {
+    content: '';
+    position: absolute;
+    right: -3.5px;
+    top: 2.5px;
+    width: 2px;
+    height: 4px;
+    background: #fff;
+    border-radius: 0 1px 1px 0;
+  }
+  .battery-fill {
+    width: 80%;
+    height: 100%;
+    background: #34c759;
+    border-radius: 1.5px;
+  }
+
+  /* Tela do WhatsApp iOS */
+  .chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #0b141a;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Header do Chat iOS */
+  .chat-header {
+    height: 52px;
+    background: rgba(18, 27, 34, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 10px;
+    z-index: 10;
+  }
+  .header-back {
+    color: #007aff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007aff, #5856d6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+  }
+  .header-info { flex: 1; }
+  .contact-name { font-size: 15px; font-weight: 600; color: #fff; }
+  .contact-status { font-size: 11px; color: #8e8e93; }
+  .header-settings-btn {
+    background: none;
+    border: none;
+    color: #007aff;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  /* Mensagens do Chat */
+  .chat-messages {
+    flex: 1;
+    padding: 14px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .chat-date-pill {
+    align-self: center;
+    background: rgba(255,255,255,0.08);
+    color: #8e8e93;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+  }
+  .msg-bubble {
+    max-width: 75%;
+    padding: 8px 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.35;
+    position: relative;
+    word-break: break-word;
+  }
+  .msg-bubble.received {
+    align-self: flex-start;
+    background: #202c33;
+    color: #e9edef;
+    border-bottom-left-radius: 4px;
+  }
+  .msg-bubble.sent {
+    align-self: flex-end;
+    background: #005c4b;
+    color: #e9edef;
+    border-bottom-right-radius: 4px;
+  }
+  .msg-time {
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    float: right;
+    margin-left: 8px;
+    margin-top: 4px;
+  }
+  .msg-time .ticks { color: #53bdeb; }
+
+  /* Barra de Entrada de Mensagem do WhatsApp iOS */
+  .chat-input-bar {
+    background: #121b22;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .input-action-btn {
+    background: none;
+    border: none;
+    color: #007aff;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+  }
+  .text-input-field {
+    flex: 1;
+    background: #2a3942;
+    border: none;
+    border-radius: 18px;
+    padding: 8px 14px;
+    color: #fff;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    resize: none;
+    max-height: 70px;
+  }
+  .send-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #007aff;
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* ================= TECLADO LAPIDA IOS ================= */
+  .lapida-keyboard-container {
+    background: #141416;
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+  }
+
+  /* Barra Superior do Lapida */
+  .lapida-toolbar {
+    height: 48px;
+    background: #1c1c1e;
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 8px;
+    overflow-x: auto;
+  }
+  .lapida-toolbar::-webkit-scrollbar { display: none; }
+
+  .lapida-brand {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding-right: 6px;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+  .lapida-brand-icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #007aff, #0055d4);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+  .lapida-brand-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.2px;
+  }
+
+  /* Botões de Ação Lapida (Pills) */
+  .lapida-pills-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .lapida-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.15s;
+    white-space: nowrap;
+  }
+  .lapida-pill:active { transform: scale(0.94); background: rgba(255,255,255,0.15); }
+  .pill-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .pill-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  /* Teclas QWERTY iOS */
+  .keyboard-grid {
+    padding: 8px 3px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #141416;
+  }
+  .kb-row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+  }
+  .kb-key {
+    flex: 1;
+    max-width: 34px;
+    height: 42px;
+    background: #48484a;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    color: #fff;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.35);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .kb-key:active { background: #636366; }
+  .kb-key.action-key {
+    background: #3a3a3c;
+    max-width: 44px;
+    font-size: 15px;
+  }
+  .kb-key.action-key:active { background: #48484a; }
+  .kb-key.space-key {
+    max-width: 180px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+  }
+  .kb-key.return-key {
+    max-width: 78px;
+    font-size: 14px;
+    font-weight: 600;
+    background: #3a3a3c;
+  }
+
+  /* Home Bar do iPhone */
+  .home-indicator {
+    width: 134px;
+    height: 5px;
+    background: #fff;
+    border-radius: 3px;
+    margin: 8px auto 6px;
+    opacity: 0.6;
+  }
+
+  /* Loading Bar & Toast */
+  #keyboard-loading {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #8e8e93;
+    padding: 0 8px;
+  }
+  .spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(0,122,255,0.3);
+    border-top-color: #007aff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Toast Notificação */
+  #toast-ios {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(28,28,30,0.96);
+    backdrop-filter: blur(20px);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 2000;
+    display: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+
+  /* Modal de Configuração da API */
+  .modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(6px);
+    z-index: 3000;
+    display: none;
+    align-items: flex-end;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal-sheet {
+    background: #1c1c1e;
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    animation: sheetUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes sheetUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .modal-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .modal-desc { font-size: 12px; color: #8e8e93; margin-bottom: 14px; }
+  .modal-input {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 14px;
+    font-family: monospace;
+    outline: none;
+    margin-bottom: 14px;
+  }
+  .modal-btn {
+    width: 100%;
+    background: #007aff;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div class="iphone-frame">
+  <!-- Dynamic Island -->
+  <div class="dynamic-island">
+    <div class="island-camera"></div>
+  </div>
+
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span>9:41</span>
+    <div class="status-icons">
+      <span>5G</span>
+      <div class="battery-pill"><div class="battery-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- Toast Notificação -->
+  <div id="toast-ios">✦ Texto lapidado!</div>
+
+  <!-- Chat WhatsApp iOS -->
+  <div class="chat-container">
+    <div class="chat-header">
+      <div class="header-back">‹</div>
+      <div class="avatar">MS</div>
+      <div class="header-info">
+        <div class="contact-name">Mariana Silva</div>
+        <div class="contact-status">online agora</div>
+      </div>
+      <button class="header-settings-btn" title="Configurar API Gemini" onclick="openConfigModal()">⚙️</button>
+    </div>
+
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-date-pill">Hoje</div>
+      <div class="msg-bubble received">
+        Oi! Tudo bem? Como foi seu dia hoje? 😊
+        <div class="msg-time">09:30</div>
+      </div>
+      <div class="msg-bubble sent">
+        oi tudo bem e vc?
+        <div class="msg-time">09:31 <span class="ticks">✓✓</span></div>
+      </div>
+      <div class="msg-bubble received">
+        Tudo ótimo! Precisava te contar uma novidade importante sobre nosso projeto...
+        <div class="msg-time">09:32</div>
+      </div>
+    </div>
+
+    <!-- Barra de Entrada -->
+    <div class="chat-input-bar">
+      <button class="input-action-btn">＋</button>
+      <textarea id="text-input" class="text-input-field" rows="1" placeholder="Mensagem">ol vamos ver se o lapida ios vai corrigir isso aq certinho</textarea>
+      <button class="send-btn" onclick="sendMessage()">➤</button>
+    </div>
+
+    <!-- TECLADO LAPIDA EXTENSION (iOS) -->
+    <div class="lapida-keyboard-container">
+      <!-- Toolbar Lapida no topo do Teclado -->
+      <div class="lapida-toolbar">
+        <div class="lapida-brand">
+          <div class="lapida-brand-icon">✏️</div>
+          <span class="lapida-brand-name">Lapida</span>
+        </div>
+
+        <div id="keyboard-loading">
+          <div class="spinner"></div>
+          <span>Lapidando com IA...</span>
+        </div>
+
+        <div class="lapida-pills-row" id="pills-row">
+          <!-- 1. Corrigir e Lapidar -->
+          <div class="lapida-pill" onclick="applyLapida('fix')">
+            <div class="pill-icon" style="background:#007AFF;">✦</div>
+            <span class="pill-title">Corrigir e Lapidar</span>
+          </div>
+
+          <!-- 2. Resumir -->
+          <div class="lapida-pill" onclick="applyLapida('summarize')">
+            <div class="pill-icon" style="background:#FF9500;">📄</div>
+            <span class="pill-title">Resumir</span>
+          </div>
+
+          <!-- 3. Complementar -->
+          <div class="lapida-pill" onclick="applyLapida('expand')">
+            <div class="pill-icon" style="background:#34C759;">↗</div>
+            <span class="pill-title">Complementar</span>
+          </div>
+
+          <!-- 4. Mais Profissional -->
+          <div class="lapida-pill" onclick="applyLapida('professional')">
+            <div class="pill-icon" style="background:#636366;">⬛</div>
+            <span class="pill-title">Mais Profissional</span>
+          </div>
+
+          <!-- 5. Mais Amigável -->
+          <div class="lapida-pill" onclick="applyLapida('friendly')">
+            <div class="pill-icon" style="background:#FF3B30;">♥</div>
+            <span class="pill-title">Mais Amigável</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Teclas QWERTY iOS -->
+      <div class="keyboard-grid" id="kb-grid">
+        <!-- Renderizado dinamicamente via JS -->
+      </div>
+
+      <!-- Home Indicator iPhone -->
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+  <!-- Modal de Configuração -->
+  <div id="config-modal" class="modal-overlay" onclick="closeConfigModal(event)">
+    <div class="modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-title">Configurações do Lapida iOS</div>
+      <div class="modal-desc">Insira sua API Key do Google Gemini para conectar o teclado à IA na nuvem. Sem chave, o teclado utiliza o motor local inteligente.</div>
+      <input type="password" id="api-key-input" class="modal-input" placeholder="Cole sua chave AIzaSy..." />
+      <button class="modal-btn" onclick="saveApiKey()">Salvar Chave</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Estado do Teclado ──
+let isShift = false;
+let isCaps = false;
+let isNumbers = false;
+let isSymbols = false;
+let apiKey = localStorage.getItem('lapida_ios_api_key') || '';
+
+const inputField = document.getElementById('text-input');
+const chatMessages = document.getElementById('chat-messages');
+const kbGrid = document.getElementById('kb-grid');
+const loadingIndicator = document.getElementById('keyboard-loading');
+const pillsRow = document.getElementById('pills-row');
+const toast = document.getElementById('toast-ios');
+
+// Layouts do Teclado
+const row1Letters = ["q","w","e","r","t","y","u","i","o","p"];
+const row2Letters = ["a","s","d","f","g","h","j","k","l","ç"];
+const row3Letters = ["z","x","c","v","b","n","m"];
+
+const row1Numbers = ["1","2","3","4","5","6","7","8","9","0"];
+const row2Numbers = ["-","/",":",";","(",")","$","&","@","\""];
+const row3Numbers = [".",",","?","!","'"];
+
+const row1Symbols = ["[","]","{","}","#","%","^","*","+","="];
+const row2Symbols = ["_","\\","|","~","<",">","€","£","¥","•"];
+
+function renderKeyboard() {
+  let r1, r2, r3;
+  if (isSymbols) {
+    r1 = row1Symbols; r2 = row2Symbols; r3 = row3Numbers;
+  } else if (isNumbers) {
+    r1 = row1Numbers; r2 = row2Numbers; r3 = row3Numbers;
+  } else {
+    r1 = row1Letters.map(c => (isShift || isCaps) ? c.toUpperCase() : c);
+    r2 = row2Letters.map(c => (isShift || isCaps) ? c.toUpperCase() : c);
+    r3 = row3Letters.map(c => (isShift || isCaps) ? c.toUpperCase() : c);
+  }
+
+  let html = `
+    <div class="kb-row">${r1.map(k => `<div class="kb-key" onclick="pressKey('${k}')">${k}</div>`).join('')}</div>
+    <div class="kb-row">${r2.map(k => `<div class="kb-key" onclick="pressKey('${k}')">${k}</div>`).join('')}</div>
+    <div class="kb-row">
+  `;
+
+  if (!isNumbers && !isSymbols) {
+    html += `<div class="kb-key action-key" onclick="toggleShift()">${isCaps ? '⇪' : (isShift ? '⬆' : '⇧')}</div>`;
+  } else if (isNumbers) {
+    html += `<div class="kb-key action-key" onclick="toggleSymbols()">#+=</div>`;
+  } else {
+    html += `<div class="kb-key action-key" onclick="toggleSymbols()">123</div>`;
+  }
+
+  html += r3.map(k => `<div class="kb-key" onclick="pressKey('${k}')">${k}</div>`).join('');
+  html += `<div class="kb-key action-key" onclick="deleteChar()">⌫</div></div>`;
+
+  // Linha 4
+  html += `
+    <div class="kb-row">
+      <div class="kb-key action-key" onclick="toggleNumbers()">${isNumbers || isSymbols ? 'ABC' : '123'}</div>
+      <div class="kb-key action-key" onclick="showToast('🌐 Alternando teclado...')">🌐</div>
+      <div class="kb-key space-key" onclick="pressKey(' ')">espaço</div>
+      <div class="kb-key return-key" onclick="pressKey('\\n')">retorno</div>
+    </div>
+  `;
+
+  kbGrid.innerHTML = html;
+}
+
+function pressKey(char) {
+  inputField.value += char;
+  if (isShift && !isCaps) {
+    isShift = false;
+    renderKeyboard();
+  }
+}
+
+function deleteChar() {
+  inputField.value = inputField.value.slice(0, -1);
+}
+
+function toggleShift() {
+  if (isShift) {
+    if (isCaps) { isShift = false; isCaps = false; }
+    else { isCaps = true; }
+  } else {
+    isShift = true;
+  }
+  renderKeyboard();
+}
+
+function toggleNumbers() {
+  isNumbers = !isNumbers;
+  isSymbols = false;
+  renderKeyboard();
+}
+
+function toggleSymbols() {
+  isSymbols = !isSymbols;
+  renderKeyboard();
+}
+
+// ── Envio de Mensagem ──
+function sendMessage() {
+  const text = inputField.value.trim();
+  if (!text) return;
+  const msgDiv = document.createElement('div');
+  msgDiv.className = 'msg-bubble sent';
+  msgDiv.innerHTML = `${escapeHtml(text)}<div class="msg-time">09:33 <span class="ticks">✓✓</span></div>`;
+  chatMessages.appendChild(msgDiv);
+  inputField.value = '';
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  setTimeout(() => {
+    const replies = ["Perfeito!", "Entendido, obrigado!", "Excelente colocação!", "Faz todo sentido."];
+    const rep = replies[Math.floor(Math.random() * replies.length)];
+    const repDiv = document.createElement('div');
+    repDiv.className = 'msg-bubble received';
+    repDiv.innerHTML = `${rep}<div class="msg-time">09:34</div>`;
+    chatMessages.appendChild(repDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }, 1000);
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// ── Lógica de Lapidação ──
+async function applyLapida(tone) {
+  const currentText = inputField.value.trim();
+  if (!currentText) {
+    showToast('Digite algo primeiro ✏️');
+    return;
+  }
+
+  // Ativa loading
+  loadingIndicator.style.display = 'flex';
+  pillsRow.style.display = 'none';
+
+  let result = null;
+  if (apiKey) {
+    result = await rewriteWithGemini(currentText, tone);
+  } else {
+    await new Promise(r => setTimeout(r, 600));
+    result = rewriteLocal(currentText, tone);
+  }
+
+  loadingIndicator.style.display = 'none';
+  pillsRow.style.display = 'flex';
+
+  if (result) {
+    inputField.value = result;
+    showToast('✦ Texto lapidado!');
+  } else {
+    showToast('⚠️ Falha ao lapidar');
+  }
+}
+
+// ── Chamada Gemini API ──
+async function rewriteWithGemini(text, tone) {
+  const prompts = {
+    fix: 'Regras obrigatórias: 1) Corrija todos os erros ortográficos, gramaticais e de concordância. 2) Substitua abreviações informais ("vc", "tb", "to", "ta", "pq", "q", "aq") pelas palavras completas ("você", "também", "estou", "está", "porque", "que", "aqui"). 3) Aplique pontuação adequada. 4) Mantenha o tom de voz original. 5) Retorne APENAS o texto final corrigido, sem aspas ou explicações.',
+    summarize: 'Reescreva o texto de forma concisa e organizada, condensando TODOS os fatos e pontos principais mencionados pelo usuário sem omitir o meio da história. Retorne apenas o texto final, sem comentários.',
+    expand: 'Expanda e enriqueça o texto adicionando detalhes, contexto e argumentos claros. Retorne APENAS o texto expandido.',
+    professional: 'Reescreva em tom profissional e formal para comunicação corporativa. Retorne APENAS o texto.',
+    friendly: 'Reescreva de forma amigável, calorosa e próxima, como conversa com um bom amigo. Retorne APENAS o texto.'
+  };
+
+  const models = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash'];
+  for (const model of models) {
+    try {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompts[tone] + '\n\nTexto: ' + text }] }],
+          generationConfig: { temperature: 0.4, maxOutputTokens: 2048 }
+        })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const out = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (out) return out.trim().replace(/^["'`]|["'`]$/g, '');
+      }
+    } catch (e) {
+      console.warn('Erro API:', e);
+    }
+  }
+  return rewriteLocal(text, tone);
+}
+
+// ── Motor Local Inteligente ──
+function rewriteLocal(text, tone) {
+  let t = text;
+  const abreviacoes = [
+    [/\bvc\b/gi, 'você'], [/\bvcs\b/gi, 'vocês'], [/\btb\b/gi, 'também'], [/\bpq\b/gi, 'porque'],
+    [/\bq\b(?=[\s,!?.]|$)/g, 'que'], [/\bto\b(?=\s)/gi, 'estou'], [/(?<!\w)ta\b(?=\s)/gi, 'está'],
+    [/\bblz\b/gi, 'beleza'], [/\bmto\b/gi, 'muito'], [/\bpra\b/gi, 'para'], [/\baq\b/gi, 'aqui'],
+    [/\baki\b/gi, 'aqui'], [/\bola\b/gi, 'olá'], [/\bol\b/gi, 'olá'], [/\bmsg\b/gi, 'mensagem']
+  ];
+  for (const [reg, rep] of abreviacoes) t = t.replace(reg, rep);
+
+  const ortografia = [
+    [/\binteligencia\b/gi, 'inteligência'], [/\bproximos\b/gi, 'próximos'], [/\bcodigo\b/gi, 'código'],
+    [/\btras\b(?=\s|$|[.,!?])/gi, 'trás'], [/\bnao\b/gi, 'não'], [/\bvoce\b/gi, 'você'], [/\btambem\b/gi, 'também']
+  ];
+  for (const [reg, rep] of ortografia) t = t.replace(reg, rep);
+
+  // Mais vs Mas
+  t = t.replace(/\bmais\s+(eu|não|nao|ele|ela|a gente|nós|eles|elas|isso|aí|aqui|acho|preciso|quero|vou|tenho|sei|estou|está|tudo)\b/gi, 'mas $1');
+  t = t.replace(/\s{2,}/g, ' ').trim();
+
+  // Capitalização
+  t = t.charAt(0).toUpperCase() + t.slice(1);
+  if (!/[.!?]$/.test(t)) t += '.';
+
+  if (tone === 'fix') return t;
+  if (tone === 'summarize') {
+    return t.replace(/\b(mano|cara|aí|tipo assim),?\s*/gi, '').trim();
+  }
+  if (tone === 'expand') {
+    return t + ' Acredito que com um diálogo claro e objetivo conseguiremos avançar da melhor forma possível.';
+  }
+  if (tone === 'professional') {
+    let p = t.replace(/\beu quero\b/gi, 'solicito').replace(/\bpreciso\b/gi, 'necessito');
+    return 'Informo que ' + p.charAt(0).toLowerCase() + p.slice(1);
+  }
+  if (tone === 'friendly') {
+    t = t.replace(/\.$/, '');
+    return t + ' 😊';
+  }
+  return t;
+}
+
+// ── Notificações & Modal ──
+let toastTimeout;
+function showToast(msg) {
+  clearTimeout(toastTimeout);
+  toast.textContent = msg;
+  toast.style.display = 'block';
+  toastTimeout = setTimeout(() => { toast.style.display = 'none'; }, 2200);
+}
+
+function openConfigModal() {
+  document.getElementById('api-key-input').value = apiKey;
+  document.getElementById('config-modal').classList.add('open');
+}
+
+function closeConfigModal(e) {
+  document.getElementById('config-modal').classList.remove('open');
+}
+
+function saveApiKey() {
+  const val = document.getElementById('api-key-input').value.trim();
+  apiKey = val;
+  localStorage.setItem('lapida_ios_api_key', val);
+  document.getElementById('config-modal').classList.remove('open');
+  showToast(val ? '✓ Chave API salva!' : 'Chave removida (motor local)');
+}
+
+// Inicialização
+renderKeyboard();
+</script>
+</body>
+</html>
