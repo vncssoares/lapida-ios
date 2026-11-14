@@ -25,7 +25,7 @@ jobs:
         run: |
           xcodebuild build \
             -project "Lapida.xcodeproj" \
-            -target "LapidaApp" \
+            -scheme "LapidaApp" \
             -configuration Release \
             -sdk iphoneos \
             -derivedDataPath build/derivedData \
