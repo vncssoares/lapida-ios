@@ -29,48 +29,12 @@ Na barra superior do teclado e na interface escura minimalista (`#1C1C1E`), est�
 
 ---
 
-## 📂 Estrutura do Projeto
+## 🛠️ Arquitetura e Geração com XcodeGen (`project.yml`)
 
-```
-PROJETO 02 - LAPIDA IOS/
-├── .github/
-│   └── workflows/
-│       └── ios-build.yml           # Workflow que compila o .ipa no macOS na nuvem
-├── Lapida.xcodeproj/
-│   └── project.pbxproj             # Projeto Xcode 15/16 com targets App e Extension
-├── LapidaApp/                      # Aplicativo Principal (SwiftUI)
-│   ├── App/
-│   │   └── LapidaApp.swift         # Entry point do App
-│   ├── Views/
-│   │   ├── ContentView.swift       # Tela principal escura com cartões e área de teste
-│   │   └── Components/
-│   │       ├── HeaderView.swift    # Logo minimalista de lápis azul
-│   │       ├── ApiKeyCard.swift    # Configuração da chave de API
-│   │       ├── StepCard.swift      # Guia visual de ativação do teclado
-│   │       └── TestAreaCard.swift  # Área interativa de testes
-│   ├── Services/
-│   │   └── SharedStorage.swift     # UserDefaults compartilhado (App Groups)
-│   ├── Models/
-│   │   └── RewriteTone.swift       # Enum dos 5 tons e prompts do Gemini
-│   ├── Assets.xcassets/            # Ícones e cores
-│   ├── LapidaApp.entitlements      # App Group: group.com.lapida.app
-│   └── Info.plist
-├── LapidaKeyboard/                 # Extensão de Teclado (UIInputViewController)
-│   ├── KeyboardViewController.swift# Controle do ciclo de vida e textDocumentProxy
-│   ├── Views/
-│   │   ├── LapidaActionToolbar.swift # Barra de ferramentas com os 5 botões
-│   │   └── KeyboardView.swift      # Teclado QWERTY PT-BR estilo iOS Dark Mode
-│   ├── Services/
-│   │   ├── GeminiService.swift     # Chamada HTTP assíncrona ao Google Gemini
-│   │   ├── LocalRewriteEngine.swift# Motor inteligente local para fallback offline
-│   │   └── SharedStorage.swift     # Leitura da API Key configurada no App
-│   ├── Models/
-│   │   └── RewriteTone.swift
-│   ├── LapidaKeyboard.entitlements # App Group compartilhado
-│   └── Info.plist                  # RequestsOpenAccess = YES
-├── simulador_ios.html              # Protótipo funcional para testar no navegador
-└── README.md
-```
+O projeto utiliza **XcodeGen** (`project.yml`), eliminando qualquer inconsistência de caminhos ou corrupção no arquivo `project.pbxproj`:
+- Target **`LapidaApp`**: Aplicativo principal em SwiftUI (iOS 16+)
+- Target **`LapidaKeyboard`**: Extensão de teclado com `embed: true` no app
+- Entitlements com **App Groups** (`group.com.lapida.app`) para compartilhamento da API Key entre o App e o Teclado
 
 ---
 
@@ -80,8 +44,8 @@ Você não precisa de um computador Mac para gerar o aplicativo iOS instalável:
 
 1. Suba esta pasta para um repositório no seu **GitHub** (`git init`, `git add .`, `git commit`, `git push`).
 2. Acesse a aba **Actions** no seu repositório do GitHub.
-3. O workflow `.github/workflows/ios-build.yml` será disparado automaticamente em uma máquina `macos-14` da nuvem com Xcode.
-4. Ao término da compilação (cerca de 2 minutos), baixe o arquivo **`Lapida.ipa`** na seção **Artifacts**.
+3. O workflow `.github/workflows/ios-build.yml` instala o `xcodegen`, gera o projeto Xcode nativo e compila tudo com `xcodebuild`.
+4. Ao término da compilação (cerca de 2 minutos), baixe o arquivo **`Lapida-iOS-v1.0-IPA`** (arquivo `Lapida.ipa`) na seção **Artifacts**.
 
 ### Como Instalar o `.ipa` no iPhone:
 - **Sideloadly (Windows/Mac):** Conecte o iPhone via cabo, selecione o arquivo `Lapida.ipa`, insira seu Apple ID e instale diretamente.
@@ -95,13 +59,13 @@ Você não precisa de um computador Mac para gerar o aplicativo iOS instalável:
 Após instalar o aplicativo no seu iPhone:
 
 1. Abra o **Lapida**, insira sua **API Key do Google Gemini** e toque em **Salvar Chave no Teclado**.
-2. Abra os **Ajustes** do iOS > **Geral** > **Teclado** > **Teclados**.
+2. Abra os **Ajustes** do iPhone > **Geral** > **Teclado** > **Teclados**.
 3. Toque em **Adicionar Novo Teclado...** e selecione **Lapida**.
 4. Toque em **Lapida** na lista e ative **Permitir Acesso Total** *(necessário para o teclado poder acessar a internet e chamar a IA)*.
-5. Pronto! Ao digitar em qualquer aplicativo (WhatsApp, Instagram, Telegram), toque no ícone de globo 🌐 para alternar para o teclado Lapida.
+5. **Pronto!** Ao digitar em qualquer aplicativo (WhatsApp, Instagram, Telegram), toque no ícone de globo 🌐 para alternar para o teclado Lapida.
 
 ---
 
 ## 🌐 Teste Imediato no Navegador (Windows)
 
-Abra o arquivo [`simulador_ios.html`](file:///c:/Users/vinis/Downloads/PROJETO%2002%20-%20REESCRITA%20IA/simulador_ios.html) em qualquer navegador (Chrome, Edge, Firefox). Ele replica perfeitamente o iPhone com WhatsApp e o Teclado Lapida funcionando em tempo real.
+Abra o arquivo [`simulador_ios.html`](file:///c:/Users/vinis/Downloads/PROJETO%2002%20-%20LAPIDA%20IOS/simulador_ios.html) em qualquer navegador (Chrome, Edge, Firefox). Ele replica perfeitamente o iPhone com WhatsApp e o Teclado Lapida funcionando em tempo real.

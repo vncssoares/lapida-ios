@@ -9,26 +9,31 @@ on:
 
 jobs:
   build-ipa:
-    name: Compilar IPA (Unsigned / Ad-Hoc)
+    name: Compilar IPA com XcodeGen (Unsigned / Ad-Hoc)
     runs-on: macos-latest
 
     steps:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
 
-      - name: Configurar Versão do Xcode
+      - name: Instalar XcodeGen
         run: |
-          sudo xcode-select -s /Applications/Xcode.app
-          xcodebuild -version
+          brew install xcodegen
+          xcodegen --version
+
+      - name: Gerar Projeto Xcode Nativo (project.pbxproj)
+        run: |
+          xcodegen generate
+          ls -la Lapida.xcodeproj
 
       - name: Compilar Projeto com xcodebuild (Sem Assinatura Paga)
         run: |
           xcodebuild build \
-            -project "Lapida.xcodeproj" \
-            -scheme "LapidaApp" \
+            -project Lapida.xcodeproj \
+            -scheme LapidaApp \
             -configuration Release \
             -sdk iphoneos \
-            -derivedDataPath build/derivedData \
+            CONFIGURATION_BUILD_DIR=build/derivedData/Build/Products/Release-iphoneos \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
@@ -38,14 +43,14 @@ jobs:
         run: |
           mkdir -p build/ipa/Payload
           
-          # Localiza o .app compilado
-          APP_PATH=$(find build/derivedData/Build/Products/Release-iphoneos -name "Lapida.app" -type d | head -n 1)
+          # Localiza a pasta .app compilada
+          APP_PATH=$(find build/derivedData/Build/Products/Release-iphoneos -name "*.app" -maxdepth 1 -type d | head -n 1)
           echo "Aplicativo compilado em: $APP_PATH"
           
-          # Copia o bundle para Payload/
+          # Copia a pasta .app para dentro de Payload/
           cp -R "$APP_PATH" build/ipa/Payload/
           
-          # Gera o arquivo .ipa
+          # Compacta em formato .ipa
           cd build/ipa
           zip -r -y Lapida.ipa Payload
           cd ../..

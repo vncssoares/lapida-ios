@@ -1,0 +1,68 @@
+name: Lapida
+options:
+  bundleIdPrefix: com.lapida.app
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    CODE_SIGNING_ALLOWED: NO
+    CODE_SIGNING_REQUIRED: NO
+    CODE_SIGN_IDENTITY: ""
+    AD_HOC_CODE_SIGNING_ALLOWED: YES
+
+targets:
+  LapidaApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: LapidaApp
+        excludes:
+          - Info.plist
+          - LapidaApp.entitlements
+    info:
+      path: LapidaApp/Info.plist
+    entitlements:
+      path: LapidaApp/LapidaApp.entitlements
+    dependencies:
+      - target: LapidaKeyboard
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lapida.app
+        PRODUCT_NAME: LapidaApp
+        INFOPLIST_KEY_CFBundleDisplayName: Lapida
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+        TARGETED_DEVICE_FAMILY: "1,2"
+
+  LapidaKeyboard:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: LapidaKeyboard
+        excludes:
+          - Info.plist
+          - LapidaKeyboard.entitlements
+    info:
+      path: LapidaKeyboard/Info.plist
+    entitlements:
+      path: LapidaKeyboard/LapidaKeyboard.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.lapida.app.keyboard
+        PRODUCT_NAME: LapidaKeyboard
+        INFOPLIST_KEY_CFBundleDisplayName: Lapida
+        CODE_SIGNING_ALLOWED: NO
+        CODE_SIGNING_REQUIRED: NO
+        CODE_SIGN_IDENTITY: ""
+        TARGETED_DEVICE_FAMILY: "1,2"
